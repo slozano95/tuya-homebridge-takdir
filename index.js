@@ -183,6 +183,11 @@ class TuyaPlatform {
         this.accessories.set(uuid, deviceAccessory.homebridgeAccessory);
         this.deviceAccessories.set(uuid, deviceAccessory);
         break;
+      case 'sd':
+        var deviceData = new DataUtil().getSubService(device.status)
+        deviceAccessory = new SwitchAccessory(this, homebridgeAccessory, device, deviceData);
+        this.accessories.set(uuid, deviceAccessory.homebridgeAccessory);
+        this.deviceAccessories.set(uuid, deviceAccessory);
       default:
         break;
     }
